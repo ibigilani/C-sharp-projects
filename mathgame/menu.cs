@@ -20,6 +20,7 @@ A- Addition
 S- Subtraction
 M- Multiplication
 D- Division
+R- Random
 Q- Quit the program");
                 Console.WriteLine("-----------------------");
                 var gameSelected = Console.ReadLine().ToUpper().Trim();
@@ -29,12 +30,18 @@ Q- Quit the program");
                                  : gameSelected == "S" ? "Subtraction"
                                  : gameSelected == "M" ? "Multiplication"
                                  : gameSelected == "D" ? "Division"
-                                 : "Invalid";
+                                 : gameSelected == "R" ? "Random"
+                                 : "Invalid"; // never used
 
                 Console.WriteLine("-----------------------");
                 if (gameSelected != "V")
                 {
                     Console.WriteLine(" {0} game selected", gameType);
+                    Console.WriteLine("--------------------------");
+                    Console.WriteLine("how many questions do you want?");
+                    string input = Console.ReadLine();
+                    int result = helper.Validate(input);
+                    engine.numOfGames = result;
                 }
                 if (gameSelected == "Q")
                 {
@@ -44,8 +51,33 @@ Q- Quit the program");
                     Environment.Exit(1);
                 }
 
+                
+
                 switch (gameSelected)
                 {
+                    case "R":
+                        string[] arr = { "A", "S","M", "D" };
+                        Random rand = new Random();
+                        int index= rand.Next(arr.Length);
+                        string randGame = arr[index];
+                        if (randGame == "A") 
+                        { 
+                            goto case "A";
+                        }
+                        else if (randGame == "S")
+                        {
+                            goto case "S";
+                        }
+                        else if(randGame == "M")
+                        {
+                            goto case "M";
+                        }
+                        else 
+                        {
+                            goto case "D";
+                        }
+
+
                     case "V":
                         helper.PrintGames();
                         break;

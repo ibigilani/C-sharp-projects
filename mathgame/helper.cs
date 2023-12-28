@@ -1,6 +1,4 @@
-﻿
-using System.Security.AccessControl;
-using mathgame.models;
+﻿using mathgame.models;
 
 namespace mathgame
 {
@@ -20,13 +18,14 @@ namespace mathgame
             return name;
         }
 
-        public static void AddToHistory(int score, string gameType)
+        public static void AddToHistory(int score, string gameType, int time)
         {
             games.Add(new game 
             {
                 Date= DateTime.Now,
                 Score= score,
-                Type= gameType
+                Type= gameType,
+                Seconds= time
             });
 
         }
@@ -38,7 +37,7 @@ namespace mathgame
             Console.WriteLine("--------------------");
             foreach (var game in gamesToPrint)
             {
-                Console.WriteLine($"{game.Date}- {game.Type}: {game.Score} pts");
+                Console.WriteLine($"{game.Date}- {game.Type}: {game.Score} pts, Speed = {game.Seconds} seconds");
             }
             Console.WriteLine("--------------------\n");
             Console.WriteLine("Press any key to go back to main menu");

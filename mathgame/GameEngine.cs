@@ -1,11 +1,15 @@
-﻿namespace mathgame
+﻿using System.Diagnostics;
+
+namespace mathgame
 {
     public class GameEngine
     {
+        public  int numOfGames {  get;  set; }
         public void addition()
         {
+            var watch = Stopwatch.StartNew();
             int score = 0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < numOfGames; i++)
             {
                 Console.Clear();
                 Console.WriteLine("Addition game");
@@ -31,16 +35,19 @@
                     Console.ReadLine();
                 }
             }
-
+            watch.Stop();
             Console.WriteLine("GAME OVER. your score is {0}. Press any key to go to the main menu", score);
             Console.ReadLine();
-            helper.AddToHistory(score, "Addition");
 
+            helper.AddToHistory(score, "Addition",watch.Elapsed.Seconds);
+            
+           
         }
         public void subtraction()
         {
+            var watch = Stopwatch.StartNew();
             int score = 0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < numOfGames; i++)
             {
                 Console.Clear();
                 Console.WriteLine("Subtraction game");
@@ -64,15 +71,16 @@
                     Console.ReadLine();
                 }
             }
-
+            watch.Stop();
             Console.WriteLine("GAME OVER. your score is {0}. Press any key to go to the main menu", score);
             Console.ReadLine();
-            helper.AddToHistory(score, "Subtraction");
+            helper.AddToHistory(score, "Subtraction", watch.Elapsed.Seconds);
         }
         public void multiplication()
         {
+            var watch= Stopwatch.StartNew();
             int score = 0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < numOfGames; i++)
             {
                 Console.Clear();
                 Console.WriteLine("Multiplication game");
@@ -97,15 +105,16 @@
                     Console.ReadLine();
                 }
             }
-
+            watch.Stop();
             Console.WriteLine("GAME OVER. your score is {0}. Press any key to go to the main menu", score);
             Console.ReadLine();
-            helper.AddToHistory(score, "Multiplication");
+            helper.AddToHistory(score, "Multiplication", watch.Elapsed.Seconds);
         }
         public void division()
         {
+            var watch= Stopwatch.StartNew();
             int score = 0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < numOfGames; i++)
             {
                 Console.Clear();
                 Console.WriteLine("Division game");
@@ -131,10 +140,10 @@
                     Console.ReadLine();
                 }
             }
-
+            watch.Stop();
             Console.WriteLine("GAME OVER. your score is {0}. Press any key to go to the main menu", score);
             Console.ReadLine();
-            helper.AddToHistory(score, "Division");
+            helper.AddToHistory(score, "Division", watch.Elapsed.Seconds);
         }
 
     }
