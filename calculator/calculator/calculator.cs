@@ -1,5 +1,5 @@
 ﻿
-namespace calculator
+namespace calculatorProgram
 {
     public class Calculator
     {

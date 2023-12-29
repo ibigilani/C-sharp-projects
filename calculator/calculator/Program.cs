@@ -1,4 +1,5 @@
-﻿using calculator;
+﻿
+using CalculatorLibrary;
 
 class Program
 {
@@ -9,6 +10,7 @@ class Program
         Console.WriteLine("Console Calculator in C#\r");
         Console.WriteLine("------------------------\n");
 
+        Calculator calculator = new Calculator();
         while (!endApp)
         {
             // Declare variables and set to empty.
@@ -50,7 +52,7 @@ class Program
 
             try
             {
-                result = Calculator.DoMath(cleanNum1, cleanNum2, op);
+                result = calculator.DoMath(cleanNum1, cleanNum2, op);
                 if (double.IsNaN(result))
                 {
                     Console.WriteLine("This operation will result in a mathematical error.\n");
