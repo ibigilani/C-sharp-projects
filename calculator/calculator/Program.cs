@@ -7,12 +7,29 @@ class Program
     {
         bool endApp = false;
         // Display title as the C# console calculator app.
-        Console.WriteLine("Console Calculator in C#\r");
-        Console.WriteLine("------------------------\n");
+        
 
         Calculator calculator = new Calculator();
         while (!endApp)
         {
+            Console.Clear();
+            Console.WriteLine("Console Calculator in C#\r");
+            Console.WriteLine("------------------------\n");
+            Console.WriteLine("Menu\n");
+            Console.WriteLine("Select 1 to View History\n");
+            Console.WriteLine("Select 2 to Go to Calculator\n");
+            if (Console.ReadLine() == "1")
+            {
+                Console.Clear();
+                foreach(string calculation in calculator.History)
+                {
+                    Console.WriteLine(calculation + "\n");
+                }
+
+                Console.WriteLine("press any key to go to Calculator");
+                Console.ReadLine();
+            }
+            Console.Clear();
             // Declare variables and set to empty.
             string numInput1 = "";
             string numInput2 = "";
@@ -67,11 +84,23 @@ class Program
             Console.WriteLine("------------------------\n");
 
             // Wait for the user to respond before closing.
+            if (calculator.History.Count == 2)
+            {
+                calculator.History.Insert(1, $"Calculator has been used {calculator.usage} times");
+            }
+            else
+            {
+                
+                    calculator.History[1]= $"Calculator has been used {calculator.usage} times";
+                
+            }
+            
             Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
             if (Console.ReadLine() == "n") endApp = true;
 
             Console.WriteLine("\n"); // Friendly linespacing.
         }
+        calculator.Finish();
         return;
     }
 }
